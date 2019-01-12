@@ -3,6 +3,7 @@ library(dplyr)
 library(sp)
 library(RSQLite)
 library(DBI)
+library(R.utils)
 
 # Decompress SQLite-files if necessary
 gunzip(

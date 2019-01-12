@@ -328,6 +328,7 @@ for (feat in features) {
 # Load requried packages
 library(RSQLite)
 library(DBI)
+library(R.utils)
 
 # Create new SQLite-file
 con <- dbConnect(
