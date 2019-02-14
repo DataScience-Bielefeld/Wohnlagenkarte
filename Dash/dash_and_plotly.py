@@ -1,10 +1,7 @@
-import folium
 import plotly.plotly as plotly
 import plotly.graph_objs as graph_objs
 import dash
-import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
 import overpy
 
 BI_COORDINATES =(52.022915, 8.528429)
