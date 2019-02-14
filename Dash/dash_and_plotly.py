@@ -11,10 +11,6 @@ ice_creams = myApi.query("""node["addr:city"="Bielefeld"]["amenity"="ice_cream"]
 
 print(len(ice_creams.nodes))
 
-#f_markers = [folium.Marker([ice.lat, ice.lon], popup='Eisdiele', tooltip=r"""<p>{name}<br/>{strasse} {nr}<br/>{stadt}</p>"""
-#                           .format(name=ice.tags["name"],strasse=ice.tags["addr:street"],
-#                                   nr=ice.tags["addr:housenumber"],stadt=ice.tags["addr:city"])).add_to(my_map) for ice in ice_creams.nodes]
-
 layout = graph_objs.Layout(
     height=600,
     autosize = True,
