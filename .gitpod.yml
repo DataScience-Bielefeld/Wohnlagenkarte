@@ -5,7 +5,7 @@ image:
 # Run shiny application on port 8080
 tasks:
   - command: >
-        R -e "shiny::runApp('./Shiny', port = 8080)"
+        R -e "library('shiny', lib.loc = '/home/gitpod/R/library'); runApp('./Shiny', port = 8080)"
 
 # Expose port 8080 and open preview in sidebar
 ports:
