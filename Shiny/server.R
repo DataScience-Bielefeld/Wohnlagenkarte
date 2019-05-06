@@ -1,9 +1,11 @@
 # Load requried packages
-library(leaflet)
-library(RColorBrewer)
-library(scales)
-library(lattice)
-library(dplyr)
+package_lib = "/home/gitpod/R/library"
+
+library(leaflet, lib.loc = package_lib)
+library(RColorBrewer, lib.loc = package_lib)
+library(scales, lib.loc = package_lib)
+library(lattice, lib.loc = package_lib)
+library(dplyr, lib.loc = package_lib)
 
 function(input, output, session) {
 
