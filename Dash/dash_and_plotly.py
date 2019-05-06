@@ -9,6 +9,7 @@ BI_COORDINATES =(52.022915, 8.528429)
 myApi = overpy.Overpass()
 ice_creams = myApi.query("""node["addr:city"="Bielefeld"]["amenity"="ice_cream"];out body;""")
 
+
 print(len(ice_creams.nodes))
 
 # The solution on the web, which we used here uses mapbox. But mapbox requires a token
