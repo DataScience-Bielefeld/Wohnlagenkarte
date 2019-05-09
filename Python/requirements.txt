@@ -1,0 +1,7 @@
+dash
+dash_core_components
+dash_html_components
+flask
+flask_cors
+pandas
+pylint
