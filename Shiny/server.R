@@ -1,4 +1,6 @@
 # Load requried packages
+package_lib = "/home/gitpod/R/library"
+
 library(leaflet)
 library(RColorBrewer)
 library(scales)
