@@ -1,11 +1,11 @@
 # Load required packages
 package_lib = "/home/gitpod/R/library"
 
-library(dplyr, lib.loc = package_lib)
-library(sp, lib.loc = package_lib)
-library(RSQLite, lib.loc = package_lib)
-library(DBI, lib.loc = package_lib)
-library(R.utils, lib.loc = package_lib)
+library(dplyr)
+library(sp)
+library(RSQLite)
+library(DBI)
+library(R.utils)
 
 # Decompress SQLite-files if necessary
 gunzip(

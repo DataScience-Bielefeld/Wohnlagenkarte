@@ -1,7 +1,7 @@
 # Load required package
 package_lib = "/home/gitpod/R/library"
 
-library(leaflet, lib.loc = package_lib)
+library(leaflet)
 
 fluidPage(
   # Display a title
