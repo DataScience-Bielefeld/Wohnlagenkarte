@@ -7,7 +7,7 @@ tasks:
   - command: >
         R -e "library('shiny'); runApp('./Shiny', port = 8080)"
   - command: >
-        cd Webapp
+        cd Webapp &&
         pip install -r requirements.txt &&
         python app.py 0.0.0.0:5050
 
