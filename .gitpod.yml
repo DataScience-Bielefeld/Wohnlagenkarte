@@ -13,7 +13,7 @@ tasks:
 
 # Expose port 8080 and open preview in sidebar
 ports:
-  - port: 8080
-    onOpen: open-preview
   - port: 5050
+    onOpen: open-preview
+  - port: 8080
     onOpen: open-preview
