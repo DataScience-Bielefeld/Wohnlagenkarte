@@ -1,4 +1,6 @@
 # Load required packages
+package_lib = "/home/gitpod/R/library"
+
 library(dplyr)
 library(sp)
 library(RSQLite)
