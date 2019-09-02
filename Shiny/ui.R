@@ -1,5 +1,5 @@
 # Load required package
-package_lib = "/home/gitpod/R/library"
+package_lib <- "/home/gitpod/R/library"
 
 library(leaflet)
 
