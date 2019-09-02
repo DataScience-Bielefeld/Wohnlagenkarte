@@ -37,6 +37,7 @@ app.layout = html.Div(children=[
                 'size': 8,
                 'opacity': 0.6
             },
+            'text': df['name'],
             'customdata': df['name'],
             'type': 'scattermapbox'
         }],
