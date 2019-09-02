@@ -36,7 +36,9 @@ app.layout = html.Div(children=[
         }],
         'layout': {
             'mapbox': {
-                'accesstoken': 'pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2ozcGI1MTZ3MDBpcTJ3cXR4b3owdDQwaCJ9.8jpMunbKjdq1anXwU5gxIw'
+                'accesstoken': 'pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2ozcGI1MTZ3MDBpcTJ3cXR4b3owdDQwaCJ9.8jpMunbKjdq1anXwU5gxIw',
+                'center' : {"lat": 52.022915, "lon": 8.528429},
+                'zoom' : 9,
             },
             'hovermode': 'closest',
             'margin': {'l': 0, 'r': 0, 'b': 0, 't': 0}
