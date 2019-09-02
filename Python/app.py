@@ -3,6 +3,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
+import overpy
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -10,10 +11,15 @@ mapbox_access_token = 'pk.eyJ1IjoiYWxpc2hvYmVpcmkiLCJhIjoiY2ozYnM3YTUxMDAxeDMzcG
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/'
-    'plotly/datasets/master/'
-'1962_2006_walmart_store_openings.csv')
+myApi = overpy.Overpass()
+ice_creams = myApi.query("""node["addr:city"="Bielefeld"]["amenity"="ice_cream"];out body;""")
+ice_dict= {"lat":[ice.lat for ice in ice_creams.nodes],
+           "lon":[ice.lon for ice in ice_creams.nodes],
+           "name":[ice.tags["name"] for ice in ice_creams.nodes],
+           "strasse":[ice.tags["addr:street"] for ice in ice_creams.nodes],
+           "nr":[ice.tags["addr:housenumber"] for ice in ice_creams.nodes],
+           "stadt":[ice.tags["addr:city"] for ice in ice_creams.nodes]}
+df = pd.DataFrame(ice_dict)
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
@@ -24,14 +30,14 @@ app.layout = html.Div(children=[
 
     dcc.Graph(id='map', figure={
         'data': [{
-            'lat': df['LAT'],
-            'lon': df['LON'],
+            'lat': df['lat'],
+            'lon': df['lon'],
             'marker': {
-                'color': df['YEAR'],
+                'color': "red",
                 'size': 8,
                 'opacity': 0.6
             },
-            'customdata': df['storenum'],
+            'customdata': df['name'],
             'type': 'scattermapbox'
         }],
         'layout': {
