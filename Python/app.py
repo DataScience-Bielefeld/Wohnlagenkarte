@@ -13,13 +13,21 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 myApi = overpy.Overpass()
 ice_creams = myApi.query("""node["addr:city"="Bielefeld"]["amenity"="ice_cream"];out body;""")
+kindergardens = myApi.query("""node["addr:city"="Bielefeld"]["amenity"="kindergarten"];out body;""")
 ice_dict= {"lat":[ice.lat for ice in ice_creams.nodes],
            "lon":[ice.lon for ice in ice_creams.nodes],
            "name":[ice.tags["name"] for ice in ice_creams.nodes],
            "strasse":[ice.tags["addr:street"] for ice in ice_creams.nodes],
            "nr":[ice.tags["addr:housenumber"] for ice in ice_creams.nodes],
            "stadt":[ice.tags["addr:city"] for ice in ice_creams.nodes]}
-df = pd.DataFrame(ice_dict)
+kg_dict= {"lat":[kg.lat for kg in kindergardens.nodes],
+           "lon":[kg.lon for kg in kindergardens.nodes],
+           "name":["Kindergarten",] * len(kindergardens.nodes),
+           "strasse":[kg.tags["addr:street"] for kg in kindergardens.nodes],
+           "nr":[kg.tags["addr:housenumber"] for kg in kindergardens.nodes],
+           "stadt":[kg.tags["addr:city"] for kg in kindergardens.nodes]}
+df_ice = pd.DataFrame(ice_dict)
+df_kg = pd.DataFrame(kg_dict)
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
@@ -30,15 +38,26 @@ app.layout = html.Div(children=[
 
     dcc.Graph(id='map', figure={
         'data': [{
-            'lat': df['lat'],
-            'lon': df['lon'],
+            'lat': df_ice['lat'],
+            'lon': df_ice['lon'],
             'marker': {
                 'color': "red",
                 'size': 8,
                 'opacity': 0.6
             },
-            'text': df['name'],
-            'customdata': df['name'],
+            'text': df_ice['name'],
+            'customdata': df_ice['name'],
+            'type': 'scattermapbox'
+        }] +  [{
+            'lat': df_kg['lat'],
+            'lon': df_kg['lon'],
+            'marker': {
+                'color': "blue",
+                'size': 8,
+                'opacity': 0.6
+            },
+            'text': df_kg['name'],
+            'customdata': df_kg['name'],
             'type': 'scattermapbox'
         }],
         'layout': {
