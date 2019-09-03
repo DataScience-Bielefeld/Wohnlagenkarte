@@ -23,7 +23,7 @@ function(input, output, session) {
       setView(lng = 8.531990, lat = 52.020615, zoom = 16)
   )
 
-  # Initialise reative values to hold information of GPS-data of map
+  # Initialise reactive values to hold information of GPS-data of map
   react_coord <- reactiveValues(
     north = 0,
     east = 0,
@@ -34,7 +34,7 @@ function(input, output, session) {
     values = 0
   )
 
-  # Every time the maps has changed (due to zooming or dragging) ...
+  # Every time the map has changed (due to zooming or dragging) ...
   # ... fill reactive value
   observe({
     if(!is.null(input$leaflet_map_bounds)) {
@@ -115,7 +115,7 @@ function(input, output, session) {
           # ... add lines to map to draw the frame of building and ...
           # ... fill the inside with colour based on rating
           lf <- lf %>% addPolylines(
-            data=building_polygons@lines[[i]],
+            data = building_polygons@lines[[i]],
             color = "black",
             weight = 2,
             opacity = 1.0,
